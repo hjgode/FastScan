@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="FastScan.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FastScan"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <CheckBox x:Name="checkBox_enableWedge" Content="Enable Wedge" HorizontalAlignment="Left" Margin="28,41,0,0" VerticalAlignment="Top" Click="checkBox_Click"/>
+        <Button x:Name="button_View1" Content="Show Page 1" HorizontalAlignment="Left" Height="43" Margin="10,194,0,0" VerticalAlignment="Top" Width="241" Click="button_View1_Click"/>
+        <Button x:Name="button_View2" Content="Show Page 2" HorizontalAlignment="Left" Height="48" Margin="10,307,0,0" VerticalAlignment="Top" Width="241" Click="button_View2_Click"/>
+        <CheckBox x:Name="checkBox_EnableAutoScan" Content="Enable AutoScan" HorizontalAlignment="Left" Margin="28,115,0,0" VerticalAlignment="Top" Click="checkBox_Click"/>
+
+    </Grid>
+</Page>
