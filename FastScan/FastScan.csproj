@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="AppSoundEffects.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ExitDialog.cs" />
     <Compile Include="Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>

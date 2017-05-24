@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -17,12 +18,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace FastScan
 {
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
         #region global vars
+
         string[] WedgeDisable = new string[]
             {"<?xml version=\"1.0\"?>",
                 "<ConfigDoc flags=\"720\" name=\"Data Collection Profiles\">",
@@ -46,11 +49,26 @@ namespace FastScan
         #endregion
         public static bool bEnableAutoScan = false;
         static bool bEnableWedge = false;
+        ExitDialog exitDialog=new ExitDialog();
 
         public MainPage()
         {
             this.InitializeComponent();
             enableWedge(bEnableWedge);
+            //Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += async (s, a) =>
+            //{
+            //    bool bHandled = false;
+            //    Class1.doLog("BackRequested");
+            //    if (Frame.CanGoBack)
+            //    {
+            //        if (!await exitDialog.exitDialog())
+            //        {
+            //            bHandled = true;
+            //            Application.Current.Exit();
+            //        }
+            //    }
+            //    a.Handled = bHandled;
+            //};
         }
         protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
