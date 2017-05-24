@@ -96,14 +96,35 @@ namespace FastScan
                 AppViewBackButtonVisibility.Visible :
                 AppViewBackButtonVisibility.Collapsed;
         }
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        private async void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
             if (rootFrame.CanGoBack)
             {
+                Class1.doLog("App xaml: rootFrame.CanGoBack TRUE");
                 e.Handled = true;
                 rootFrame.GoBack();
+            }
+            else
+            {
+                e.Handled = true;
+                //we are in the root page
+                Class1.doLog("App xaml: rootFrame.CanGoBack FALSE");
+                ExitDialog dlg = new ExitDialog();
+
+                Class1.doLog("if (await exitDialog())...");
+                if (await dlg.exitDialog())
+                {
+                    Class1.doLog("if (await exitDialog())  about to close app");
+                    // Close the App if you are on the startpage
+                    if (rootFrame.CurrentSourcePageType == typeof(MainPage))
+                    {
+                        Class1.doLog("EXIT app");
+                        App.Current.Exit();
+                    }
+                    //Application.Current.Exit();
+                }
             }
         }
 

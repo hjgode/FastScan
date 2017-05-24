@@ -23,9 +23,12 @@ namespace FastScan
         }
         public async System.Threading.Tasks.Task<bool> exitDialog()
         {
+            Class1.doLog("exitDialog started");
+
             bool bDoExit = true;
             UICommand yesCommand = new UICommand("Yes", cmd => { bDoExit = true; });
             UICommand noCommand = new UICommand("No", cmd => { bDoExit = false; });
+
             Windows.UI.Popups.MessageDialog dlg = new Windows.UI.Popups.MessageDialog(_content, _title);
             dlg.Options = MessageDialogOptions.None;
             dlg.Commands.Add(yesCommand);
@@ -37,9 +40,13 @@ namespace FastScan
             }
             dlg.DefaultCommandIndex = 0;
             dlg.CancelCommandIndex = 1;
-            var command = await dlg.ShowAsync();
-            if (command == yesCommand) { }
-            if (command == noCommand) { }
+            var command = await dlg.ShowAsync(); //already sets bDoExit
+            if (command == yesCommand) {
+                bDoExit = true;
+            }
+            if (command == noCommand) {
+                bDoExit = false;
+            }
 
             return bDoExit;
 
